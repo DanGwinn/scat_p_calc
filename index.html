@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Scat p Calculator</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --card: #ffffff;
+    --ink: #1c2530;
+    --muted: #6a7787;
+    --line: #d9dde4;
+    --accent: #2b5f6b;
+    --accent-ink: #ffffff;
+    --danger: #a02b3b;
+    --highlight: #f7ecd0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-text-size-adjust: 100%; }
+  body { padding: 16px 14px 40px; max-width: 520px; margin: 0 auto; }
+  h1 { font-size: 18px; font-weight: 600; margin: 0 0 4px; letter-spacing: 0.2px; }
+  .sub { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px; margin-bottom: 12px; }
+  .card h2 { font-size: 14px; font-weight: 600; margin: 0 0 10px; letter-spacing: 0.2px;
+    text-transform: uppercase; color: var(--muted); }
+
+  .row { display: flex; justify-content: space-between; align-items: baseline;
+    padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 15px; }
+  .row:last-child { border-bottom: 0; }
+  .row .label { color: var(--muted); }
+  .row .val { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+  .p-hero { text-align: center; padding: 18px 0 12px; background: var(--highlight);
+    border-radius: 8px; margin-bottom: 6px; }
+  .p-hero .p-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--muted); }
+  .p-hero .p-val { font-size: 44px; font-weight: 700; font-variant-numeric: tabular-nums;
+    line-height: 1.1; margin-top: 2px; }
+  .p-hero .p-hint { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  label { display: block; margin-top: 10px; font-size: 13px; color: var(--muted); }
+  input[type=number] { width: 100%; padding: 10px 12px; font-size: 17px;
+    border: 1px solid var(--line); border-radius: 8px; background: #fff;
+    font-variant-numeric: tabular-nums; margin-top: 4px; }
+
+  button { width: 100%; padding: 13px 12px; font-size: 15px; font-weight: 600;
+    border: 0; border-radius: 8px; background: var(--accent); color: var(--accent-ink);
+    margin-top: 10px; cursor: pointer; }
+  button.secondary { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  button.danger { background: transparent; color: var(--danger); border: 1px solid var(--line); }
+  button:disabled { opacity: 0.4; }
+
+  .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .banner { font-size: 12px; color: var(--muted); text-align: center; padding: 8px 0 0; }
+  .warn { color: var(--danger); font-size: 12px; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<h1>Scat p Calculator</h1>
+<div class="sub">Adaptive retention probability for scat surveys.</div>
+
+<!-- SETUP CARD: shown when no survey is in progress -->
+<div id="setup" class="card" style="display:none;">
+  <h2>Start new survey</h2>
+  <label>Survey label (optional)
+    <input type="text" id="in_label" placeholder="e.g. Timperley_29052026" style="width:100%;padding:10px 12px;font-size:17px;border:1px solid var(--line);border-radius:8px;background:#fff;margin-top:4px;">
+  </label>
+  <label>Scat budget (scatMax)
+    <input type="number" id="in_scatmax" min="1" step="1" inputmode="numeric">
+  </label>
+  <label>Total segments planned
+    <input type="number" id="in_nseg" min="1" step="1" inputmode="numeric">
+  </label>
+  <label>Prior λ (expected scats per segment)
+    <input type="number" id="in_priorlam" min="0" step="0.01" inputmode="decimal">
+  </label>
+  <label>Prior weight (segments)
+    <input type="number" id="in_priorwt" min="0" step="0.1" value="3" inputmode="decimal">
+  </label>
+  <div id="setup_warn" class="warn"></div>
+  <button id="btn_start">Start survey</button>
+</div>
+
+<!-- LIVE CARD: shown during a survey -->
+<div id="live" style="display:none;">
+
+  <div class="p-hero">
+    <div class="p-label">Retention probability p</div>
+    <div class="p-val" id="p_display">–</div>
+    <div class="p-hint" id="p_hint">for segment <span id="seg_num">1</span> of <span id="seg_total">–</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Running totals</h2>
+    <div class="row"><span class="label">Survey</span><span class="val" id="survey_label">–</span></div>
+    <div class="row"><span class="label">Segments completed</span><span class="val" id="segs_done">0</span></div>
+    <div class="row"><span class="label">Scats encountered</span><span class="val" id="tot_enc">0</span></div>
+    <div class="row"><span class="label">Scats collected</span><span class="val" id="tot_col">0</span></div>
+    <div class="row"><span class="label">Budget remaining</span><span class="val" id="budget_rem">–</span></div>
+    <div class="row"><span class="label">Segments remaining</span><span class="val" id="segs_rem">–</span></div>
+    <div class="row"><span class="label">λ̂ (encounters/seg)</span><span class="val" id="lam_hat">–</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Enter completed segment</h2>
+    <div class="side-by-side">
+      <label>Encountered
+        <input type="number" id="in_enc" min="0" step="1" inputmode="numeric">
+      </label>
+      <label>Collected
+        <input type="number" id="in_col" min="0" step="1" inputmode="numeric">
+      </label>
+    </div>
+    <div id="entry_warn" class="warn"></div>
+    <button id="btn_submit">Submit segment &amp; compute next p</button>
+  </div>
+
+  <div class="card">
+    <button id="btn_undo" class="secondary">Undo last segment</button>
+    <button id="btn_new" class="danger">Discard survey and start new</button>
+  </div>
+</div>
+
+<div class="banner">Data saved in this browser only. Add to home screen for quick access.</div>
+
+<script>
+"use strict";
+
+var STORE_KEY = "scat_p_calc_v1";
+
+function loadState() {
+  try {
+    var raw = localStorage.getItem(STORE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) { return null; }
+}
+function saveState(s) {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch (e) {}
+}
+function clearState() {
+  try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+}
+
+// Core rule: prior-blended lambda_hat, p = budget / (lam_hat * seg_remaining), clamped [0,1].
+function computeP(state) {
+  var totEnc = state.encounters.reduce(function(a,b){return a+b;}, 0);
+  var totCol = state.collections.reduce(function(a,b){return a+b;}, 0);
+  var nDone  = state.encounters.length;
+  var lamHat = (state.priorLam * state.priorWt + totEnc) /
+               (state.priorWt + nDone);
+  var budgetRem   = Math.max(0, state.scatMax - totCol);
+  var segsRem     = Math.max(1, state.totalSeg - nDone);
+  var p;
+  if (lamHat > 0 && isFinite(lamHat)) {
+    p = budgetRem / (lamHat * segsRem);
+  } else {
+    p = 1;
+  }
+  if (!isFinite(p)) p = 1;
+  p = Math.max(0, Math.min(1, p));
+  return { p: p, lamHat: lamHat, totEnc: totEnc, totCol: totCol,
+           nDone: nDone, budgetRem: budgetRem, segsRem: segsRem };
+}
+
+function render(state) {
+  if (!state) {
+    document.getElementById("setup").style.display = "";
+    document.getElementById("live").style.display = "none";
+    return;
+  }
+  document.getElementById("setup").style.display = "none";
+  document.getElementById("live").style.display = "";
+
+  var c = computeP(state);
+  document.getElementById("p_display").textContent = c.p.toFixed(3);
+  document.getElementById("seg_num").textContent   = String(c.nDone + 1);
+  document.getElementById("seg_total").textContent = String(state.totalSeg);
+  document.getElementById("survey_label").textContent = state.label || "(unlabelled)";
+  document.getElementById("segs_done").textContent = String(c.nDone);
+  document.getElementById("tot_enc").textContent   = String(c.totEnc);
+  document.getElementById("tot_col").textContent   = String(c.totCol);
+  document.getElementById("budget_rem").textContent = String(c.budgetRem);
+  document.getElementById("segs_rem").textContent  = String(c.segsRem);
+  document.getElementById("lam_hat").textContent   = isFinite(c.lamHat) ? c.lamHat.toFixed(2) : "–";
+
+  document.getElementById("btn_undo").disabled = (c.nDone === 0);
+  document.getElementById("in_enc").value = "";
+  document.getElementById("in_col").value = "";
+  document.getElementById("entry_warn").textContent = "";
+}
+
+function startSurvey() {
+  var scatMax  = Number(document.getElementById("in_scatmax").value);
+  var totalSeg = Number(document.getElementById("in_nseg").value);
+  var priorLam = Number(document.getElementById("in_priorlam").value);
+  var priorWt  = Number(document.getElementById("in_priorwt").value);
+  var label    = document.getElementById("in_label").value.trim();
+
+  var warn = "";
+  if (!(scatMax > 0))  warn = "Scat budget must be a positive number.";
+  else if (!(totalSeg > 0)) warn = "Total segments must be a positive number.";
+  else if (!(priorLam >= 0)) warn = "Prior λ must be zero or positive.";
+  else if (!(priorWt >= 0))  warn = "Prior weight must be zero or positive.";
+  if (warn) {
+    document.getElementById("setup_warn").textContent = warn;
+    return;
+  }
+
+  var state = {
+    label: label,
+    scatMax: scatMax,
+    totalSeg: totalSeg,
+    priorLam: priorLam,
+    priorWt: priorWt,
+    encounters: [],
+    collections: [],
+    startedAt: new Date().toISOString()
+  };
+  saveState(state);
+  render(state);
+}
+
+function submitSegment() {
+  var state = loadState();
+  if (!state) return;
+  var enc = Number(document.getElementById("in_enc").value);
+  var col = Number(document.getElementById("in_col").value);
+  var warn = "";
+  if (!(enc >= 0) || !Number.isInteger(enc)) warn = "Encountered must be a whole number (0 or more).";
+  else if (!(col >= 0) || !Number.isInteger(col)) warn = "Collected must be a whole number (0 or more).";
+  else if (col > enc) warn = "Collected can't exceed encountered.";
+  if (warn) {
+    document.getElementById("entry_warn").textContent = warn;
+    return;
+  }
+  state.encounters.push(enc);
+  state.collections.push(col);
+  saveState(state);
+  render(state);
+}
+
+function undoLast() {
+  var state = loadState();
+  if (!state || state.encounters.length === 0) return;
+  if (!confirm("Undo the last submitted segment?")) return;
+  state.encounters.pop();
+  state.collections.pop();
+  saveState(state);
+  render(state);
+}
+
+function discardAndNew() {
+  if (!confirm("Discard the current survey and start a new one? This cannot be undone.")) return;
+  clearState();
+  document.getElementById("in_label").value = "";
+  document.getElementById("in_scatmax").value = "";
+  document.getElementById("in_nseg").value = "";
+  document.getElementById("in_priorlam").value = "";
+  document.getElementById("in_priorwt").value = "3";
+  document.getElementById("setup_warn").textContent = "";
+  render(null);
+}
+
+document.getElementById("btn_start").addEventListener("click", startSurvey);
+document.getElementById("btn_submit").addEventListener("click", submitSegment);
+document.getElementById("btn_undo").addEventListener("click", undoLast);
+document.getElementById("btn_new").addEventListener("click", discardAndNew);
+
+render(loadState());
+</script>
+</body>
+</html>
