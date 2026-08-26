@@ -65,7 +65,8 @@
 <body>
 
 <h1>Scat Collection Proportion Calculator</h1>
-<div class="sub">The app calculates the proportion of scats encountered that are to be collected for genetic analysis.<br>Definitions:<br></div>
+<div class="sub">This app adaptively adjusts scat collection effort across transect segments to achieve a target number of scats collected in total at the end of the survey.<br>
+  To begin, fill in the fields below and click Start survey</div>
 
 <!-- SETUP CARD: shown when no survey is in progress -->
 <div id="setup" class="card" style="display:none;">
@@ -73,7 +74,7 @@
   <label>Survey label (optional)
     <input type="text" id="in_label" placeholder="e.g. Timperley_29052026" style="width:100%;padding:10px 12px;font-size:17px;border:1px solid var(--line);border-radius:8px;background:#fff;margin-top:4px;">
   </label>
-  <label>Scat Target number of scats to be collected
+  <label>Target number of scats to be collected at the site
     <input type="number" id="in_scatmax" min="1" step="1" inputmode="numeric">
   </label>
   <label>Total segments to be surveyed
