@@ -64,7 +64,7 @@
 </head>
 <body>
 
-<h1>Scat Collection Proportion Calculator</h1>
+<h1>Scat Collection Probability Calculator</h1>
 <div class="sub">This app adaptively adjusts scat collection effort across transect segments to achieve a target number of scats collected in total at the end of the survey.<br>
   To begin, fill in the fields below and click Start survey</div>
 
@@ -75,13 +75,13 @@
     <input type="text" id="in_label" placeholder="e.g. Timperley_29052026" style="width:100%;padding:10px 12px;font-size:17px;border:1px solid var(--line);border-radius:8px;background:#fff;margin-top:4px;">
   </label>
   <label>Target number of scats to be collected at the site
-    <input type="number" id="in_scatmax" min="1" step="1" inputmode="numeric">
+    <input type="number" id="in_scatmax" min="1" step="1" value="100" inputmode="numeric">
   </label>
   <label>Total segments to be surveyed
-    <input type="number" id="in_nseg" min="1" step="1" inputmode="numeric">
+    <input type="number" id="in_nseg" min="1" step="1" value="50" inputmode="numeric">
   </label>
   <label>Expected scats encountered per segment
-    <input type="number" id="in_priorlam" min="0" step="0.01" inputmode="decimal">
+    <input type="number" id="in_priorlam" min="0" step="0.01" value="2" inputmode="decimal">
   </label>
   <label>Starting value weight
     <input type="number" id="in_priorwt" min="0" step="0.1" value="3" inputmode="decimal">
