@@ -94,7 +94,7 @@
 <div id="live" style="display:none;">
 
   <div class="p-hero">
-    <div class="p-label">Scat Collection Probability P<br>Input into Fulcrum</div>
+    <div class="p-label">Scat Collection Probability<br>Input into Fulcrum</div>
     <div class="p-val" id="p_display">–</div>
     <div class="p-hint" id="p_hint">for segment <span id="seg_num">1</span> of <span id="seg_total">–</span></div>
   </div>
@@ -262,9 +262,9 @@ function discardAndNew() {
   if (!confirm("Discard the current survey and start a new one? This cannot be undone.")) return;
   clearState();
   document.getElementById("in_label").value = "";
-  document.getElementById("in_scatmax").value = "";
-  document.getElementById("in_nseg").value = "";
-  document.getElementById("in_priorlam").value = "";
+  document.getElementById("in_scatmax").value = "100";
+  document.getElementById("in_nseg").value = "50";
+  document.getElementById("in_priorlam").value = "2";
   document.getElementById("in_priorwt").value = "3";
   document.getElementById("setup_warn").textContent = "";
   render(null);
