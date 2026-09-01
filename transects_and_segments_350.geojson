@@ -1,0 +1,617 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transect",
+        "transect": "T01",
+        "length_m": 100.0,
+        "bearing_deg": -10.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            115.517,
+            -32.00499
+          ],
+          [
+            115.51681605,
+            -32.00410534
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T01",
+        "segment": "S01",
+        "label": "T01_S01_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.517,
+          -32.00499
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T01",
+        "segment": "S02",
+        "label": "T01_S02_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51695401,
+          -32.00476883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T01",
+        "segment": "S03",
+        "label": "T01_S03_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51690802,
+          -32.00454767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T01",
+        "segment": "S04",
+        "label": "T01_S04_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51686204,
+          -32.0043265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_end",
+        "transect": "T01",
+        "segment": "S04",
+        "label": "T01_S04_end"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51681605,
+          -32.00410534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transect",
+        "transect": "T02",
+        "length_m": 100.0,
+        "bearing_deg": -10.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            115.51726081,
+            -32.004951
+          ],
+          [
+            115.51707686,
+            -32.00406634
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T02",
+        "segment": "S01",
+        "label": "T02_S01_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51726081,
+          -32.004951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T02",
+        "segment": "S02",
+        "label": "T02_S02_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51721482,
+          -32.00472984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T02",
+        "segment": "S03",
+        "label": "T02_S03_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51716883,
+          -32.00450867
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T02",
+        "segment": "S04",
+        "label": "T02_S04_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51712285,
+          -32.0042875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_end",
+        "transect": "T02",
+        "segment": "S04",
+        "label": "T02_S04_end"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51707686,
+          -32.00406634
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transect",
+        "transect": "T03",
+        "length_m": 100.0,
+        "bearing_deg": -10.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            115.51752162,
+            -32.004912
+          ],
+          [
+            115.51733767,
+            -32.00402734
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T03",
+        "segment": "S01",
+        "label": "T03_S01_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51752162,
+          -32.004912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T03",
+        "segment": "S02",
+        "label": "T03_S02_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51747563,
+          -32.00469084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T03",
+        "segment": "S03",
+        "label": "T03_S03_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51742964,
+          -32.00446967
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T03",
+        "segment": "S04",
+        "label": "T03_S04_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51738365,
+          -32.00424851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_end",
+        "transect": "T03",
+        "segment": "S04",
+        "label": "T03_S04_end"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51733767,
+          -32.00402734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transect",
+        "transect": "T04",
+        "length_m": 100.0,
+        "bearing_deg": -10.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            115.51778242,
+            -32.00487301
+          ],
+          [
+            115.51759847,
+            -32.00398834
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T04",
+        "segment": "S01",
+        "label": "T04_S01_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51778242,
+          -32.00487301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T04",
+        "segment": "S02",
+        "label": "T04_S02_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51773644,
+          -32.00465184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T04",
+        "segment": "S03",
+        "label": "T04_S03_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51769045,
+          -32.00443068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T04",
+        "segment": "S04",
+        "label": "T04_S04_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51764446,
+          -32.00420951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_end",
+        "transect": "T04",
+        "segment": "S04",
+        "label": "T04_S04_end"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51759847,
+          -32.00398834
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transect",
+        "transect": "T05",
+        "length_m": 100.0,
+        "bearing_deg": -10.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            115.51804323,
+            -32.00483401
+          ],
+          [
+            115.51785928,
+            -32.00394935
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T05",
+        "segment": "S01",
+        "label": "T05_S01_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51804323,
+          -32.00483401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T05",
+        "segment": "S02",
+        "label": "T05_S02_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51799725,
+          -32.00461284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T05",
+        "segment": "S03",
+        "label": "T05_S03_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51795126,
+          -32.00439168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T05",
+        "segment": "S04",
+        "label": "T05_S04_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51790527,
+          -32.00417051
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_end",
+        "transect": "T05",
+        "segment": "S04",
+        "label": "T05_S04_end"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51785928,
+          -32.00394935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transect",
+        "transect": "T06",
+        "length_m": 100.0,
+        "bearing_deg": -10.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            115.51830404,
+            -32.00479501
+          ],
+          [
+            115.51812009,
+            -32.00391035
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T06",
+        "segment": "S01",
+        "label": "T06_S01_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51830404,
+          -32.00479501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T06",
+        "segment": "S02",
+        "label": "T06_S02_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51825805,
+          -32.00457385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T06",
+        "segment": "S03",
+        "label": "T06_S03_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51821207,
+          -32.00435268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_start",
+        "transect": "T06",
+        "segment": "S04",
+        "label": "T06_S04_start"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51816608,
+          -32.00413151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "segment_end",
+        "transect": "T06",
+        "segment": "S04",
+        "label": "T06_S04_end"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.51812009,
+          -32.00391035
+        ]
+      }
+    }
+  ]
+}
